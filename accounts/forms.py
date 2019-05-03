@@ -8,7 +8,8 @@ from django.contrib.auth.forms import UserCreationForm
 class SignUpForm(UserCreationForm):
     first_name = forms.CharField(max_length=30, required=True)
     last_name = forms.CharField(max_length=30, required=True)
-    is_staff = forms.BooleanField(required=True)
+    phone_no = forms.CharField(required=True)
+    bvn = forms.IntegerField(required=True)
     email = forms.EmailField(required=True)
     username = None
 
@@ -18,7 +19,8 @@ class SignUpForm(UserCreationForm):
             'first_name', 
             'last_name', 
             'email', 
-            'is_staff',
+            'bvn',
+            'phone_no',
             'password1', 
             'password2', 
         )

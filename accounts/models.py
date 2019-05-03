@@ -58,6 +58,8 @@ class User(AbstractBaseUser, PermissionsMixin):
         _('last login'), default=datetime.now)
     is_active = models.BooleanField(_('active'), default=True)
     is_staff = models.BooleanField(_('is staff'), default=False)
+    phone_no = models.CharField(_('phone no'), max_length=14, blank=True, null=True, default="0909090909090")
+    bvn = models.IntegerField(_('bvn'), blank=True, null=True, default="0000000000")
     avatar = models.ImageField(upload_to='avatars/', null=True, blank=True)
 
     USERNAME_FIELD = 'email'

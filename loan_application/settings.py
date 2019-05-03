@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'accounts',
+    'dashboard',
 ]
 
 MIDDLEWARE = [
@@ -57,7 +58,7 @@ ROOT_URLCONF = 'loan_application.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['loan_application/templates', 'accounts/templates'],
+        'DIRS': ['loan_application/templates', 'accounts/templates', 'dashboard/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

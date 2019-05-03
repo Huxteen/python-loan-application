@@ -53,7 +53,8 @@ def signup(request):
                     password=form.cleaned_data['password1'],
                     first_name=form.cleaned_data['first_name'],
                     last_name=form.cleaned_data['last_name'],
-                    is_staff=int(request.POST['is_staff']),
+                    phone_no=request.POST['phone_no'],
+                    bvn=request.POST['bvn'],
                 )                
                 auth.login(request, user)
                 return redirect('dashboard')

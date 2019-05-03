@@ -5,6 +5,5 @@ from django.template import loader, RequestContext
 
 # View for the home Page
 
-
 def home(request):
     return render(request, 'home.html')
