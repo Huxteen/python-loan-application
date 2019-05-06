@@ -4,4 +4,6 @@ static/* linguist-vendored
 loan_application/static/* linguist-vendored
 loan_application/templates/* linguist-vendored
 dashboard/templates/* linguist-vendored
+dashboard/templates/dashboard/* linguist-vendored
 accounts/templates/* linguist-vendored
+accounts/templates/accounts* linguist-vendored
