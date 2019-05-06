@@ -38,7 +38,7 @@ SECRET_KEY = 'r8-5+42z90dmhm@k2q!v5)q+8ahq4cioxobphzwsw7p!wqd6_3'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['quick-loan.herokuapp.com']
+ALLOWED_HOSTS = ['quick-loan.herokuapp.com', '127.0.0.1', 'localhost']
 
 AUTH_USER_MODEL = 'accounts.User'
 
