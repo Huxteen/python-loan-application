@@ -57,8 +57,10 @@ class User(AbstractBaseUser, PermissionsMixin):
     last_login = models.DateTimeField(
         _('last login'), default=datetime.now)
     is_active = models.BooleanField(_('active'), default=True)
+    email_confirmed = models.BooleanField(_('email confirmed'), default=False)
     is_staff = models.BooleanField(_('is staff'), default=False)
     phone_no = models.CharField(_('phone no'), max_length=14, blank=True, null=True, default="0909090909090")
+    activation_token = models.CharField(_('activation token'), max_length=255, blank=True, null=True)
     bvn = models.IntegerField(_('bvn'), blank=True, null=True, default="0000000000")
     avatar = models.ImageField(upload_to='avatars/', null=True, blank=True)
 

@@ -1190,7 +1190,7 @@ a.accordion-toggle i {
     background: none repeat scroll 0 0 #2E2E2E;
     border-top: 5px solid #19355E;
     height: 84px;
-    margin-top: 120px;
+    /* margin-top: 120px; */
 }
 
 .footer_left {

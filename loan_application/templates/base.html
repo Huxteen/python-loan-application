@@ -24,6 +24,9 @@
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
     <![endif]-->
+
+    <!--CSS Magnific Pop up - Used in the gallery section to create an image modal and next button for seamless experience.-->
+    <link rel="stylesheet" href="{% static 'assets/plugins/magnific-popup/magnific-popup.css' %}">
    
 </head>
 <!--/head-->
@@ -51,49 +54,45 @@
                         <li><a href="#">Our Solutions</a></li>
                         <li><a href="#">Contacts</a></li>
 
-                        {% comment %} {% if user.is_authenticated %} {% endcomment %}
+                        {% if user.is_authenticated %}
 
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dashboard &nbsp;<i class="fa fa-angle-down"></i></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Dashboard</a></li>
-                                {% comment %}
-                                    I think Doctors get sick also they should be able to create and view their medical report also 
-                                {% endcomment %}
-                                <li><a href="#">Create Medical Report</a></li>
-                                <li><a href="#">My Medical Report</a></li>
-                                {% comment %} {% if user.is_staff %} {% endcomment %}
-                                    <li><a href="#">Patients Medical Report</a></li>
-                                    <li><a href="#">Saved Report</a></li>
-                                {% comment %} {% endif %}                             {% endcomment %}
-                                <li><a href="#">Medical Statistic</a></li>
-                            </ul>
-                        </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dashboard &nbsp;<i class="fa fa-angle-down"></i></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+                                    {% if user.is_staff %}
+                                        <li><a href="{% url 'view_all_loans' %}">View all loans</a></li>
+                                        <li><a href="{% url 'view_all_repayment' %}">View all repayment</a></li>
+                                        <li><a href="#">Declined loan</a></li>
+                                    {% else %}
+                                        <li><a href="{% url 'request_loan' %}">Request a loan</a></li>
+                                        <li><a href="{% url 'my_loan' %}">My Loan</a></li>
+                                    {% endif %}                           
+                                </ul>
+                            </li>
                     
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Email&nbsp;<i class="fa fa-angle-down"></i></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Profile</a></li>
-                                <li><a href="#">Settings</a></li>
-                                <li><a class="dropdown-item" href="javascript:{document.getElementById('js-logout').submit()}" onClick=""> Logout</a></li>
-                            </ul>
-                            <form id="js-logout" method="POST" action="#">
-                                {% csrf_token %}
-                                <input type="hidden">
-                            </form>
-                        </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{user.email|slice:"20"}}&nbsp;<i class="fa fa-angle-down"></i></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Profile</a></li>
+                                    <li><a href="#">Settings</a></li>
+                                    <li><a class="dropdown-item" href="javascript:{document.getElementById('js-logout').submit()}" onClick=""> Logout</a></li>
+                                </ul>
+                                <form id="js-logout" method="POST" action="{% url 'logout' %}">
+                                    {% csrf_token %}
+                                    <input type="hidden">
+                                </form>
+                            </li>
 
-                        {% comment %} {% else %} {% endcomment %}
-
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Accounts&nbsp;<i class="fa fa-angle-down"></i></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="{% url 'login' %}">Login</a></li>
-                                <li><a href="{% url 'signup' %}">Register</a></li>
-                            </ul> 
-                        </li>
-                        
-                        {% comment %} {% endif %} {% endcomment %}
+                        {% else %}
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Accounts&nbsp;<i class="fa fa-angle-down"></i></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="{% url 'login' %}">Login</a></li>
+                                    <li><a href="{% url 'signup' %}">Register</a></li>
+                                </ul> 
+                            </li>
+                        {% endif %}
                     </ul>
                 </div>
             </div>
@@ -111,7 +110,7 @@
     {% block content %}
 
     {% endblock %}
-        <section >
+        <section class="base-content-container" >
             <div class="container" >
                 
             </div>
@@ -138,14 +137,20 @@
     </div>
    
 
-    <script src="{% static 'assets/js/jquery.js' %}"></script>
+    {% comment %} <script src="{% static 'assets/js/jquery.js' %}"></script> {% endcomment %}
+    <script src="{% static 'assets/js/jquery-3.1.1.min.js' %}"></script>
     <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
     <script src="{% static 'assets/js/jquery.prettyPhoto.js' %}"></script>
     <script src="{% static 'assets/js/moment.min.js' %}"></script>
     <script src="{% static 'assets/js/jquery.isotope.min.js' %}"></script>
     <script src="{% static 'assets/js/main.js' %}"></script>
     <script src="{% static 'assets/js/script.js' %}"></script>
+    <script src="{% static 'assets/js/index.js' %}"></script>
     <script src="{% static 'assets/js/datepicker.min.js' %}"></script>
-    
+
+    <!--JS Magnific Pop up - Used in the gallery section to create an image modal and next button for seamless experience.-->
+    <script rel="text/javascript" src="{% static 'assets/plugins/magnific-popup/jquery.magnific-popup.js' %}"></script>
+    <script rel="text/javascript" src="{% static 'assets/plugins/magnific-popup/custom-hook.js' %}"></script>
+       
 </body>
 </html>

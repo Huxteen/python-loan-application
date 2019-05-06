@@ -6,32 +6,55 @@
 {% load static %}
 <section style="background: #eee;">
     <div class="container">
-        <div class="jumbotron">
-            <h1 class="display-3">Hello, {{user.email|capfirst}}!</h1>
-            <p class="lead">
-            
-            This is a simple hero unit, a simple jumbotron-style component for calling extra attention to
-                featured content or information. 
-                <p>First Name: &nbsp;<strong>{{user.first_name}}</strong></p>
-                <p>Last Name: &nbsp;<strong>{{user.last_name}}</strong></p>
-                <p>Is Staff: &nbsp;<strong>{{user.is_staff}}</strong></p>
-                <p>Is Active: &nbsp;<strong>{{user.is_active}}</strong></p>
-                <p>Date Joined: &nbsp;<strong>{{user.date_joined}}</strong></p>
-                <p>Last Login: &nbsp; <strong>{{user.last_login}}</strong></p>
-                <p>Last Login: &nbsp; <strong>{{user.last_login}}</strong></p>
-                <p>Phone Number: &nbsp; <strong>{{user.phone_no}}</strong></p>
-                <p>BVN: &nbsp;<strong>{{user.bvn}}</strong></p>
-                <p>Email Address: &nbsp;<strong>{{user.email|capfirst}}</strong></p>
-                <p>Password: &nbsp;<strong>{{user.password}}</strong></p>
-                <p>Full Name: &nbsp;<strong>{{user.get_full_name}}</strong></p>
-                <p>Profile Pics: &nbsp;<strong>{{user.avater}}</strong></p>
+       <div class="row">
+        <div class="col-md-12 pad-md-0">
+            <div class="col-md-3">
+                <div class="col-md-12 pad-md-0">
+                    <div class="col-md-10 pad-md-0 center-block avater-container">
+                        {% if user.avatar %}
+                            <img src="{{user.avatar.url}}" height="200px" width="200px" class="dashboard_image_settings">
+                        {% else %}
+                            <img src="{% static 'assets/images/user_profile.png' %}" height="200px" width="200px" class="dashboard_image_settings">
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="col-md-12 pad-md-0">
+                    <div class="col-md-10 pad-md-0 center-block dashboard-button">
+                        <form method="POST" action="{% url 'change_image' %}" class="if-profile-image-change" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="cropitIconUpload" >
+                                <label class="cropitCustomIconUpload">
+                                    <input  type="file" name="avatar" class="new-profile-image">
+                                    Change Image
+                                </label>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-12 pad-md-0">
+                    <div class="col-md-10 pad-md-0 center-block dashboard-button">
+                        <a href="{% url 'dashboard' %}">
+                            <button class="btn btn-success col-md-12 margin-top-10 primary-bg-btn"> <strong>Dashboard</strong> </button>
+                        </a>
+                    </div>
+                </div>
 
-            <hr class="my-4">
-            <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-            <p class="lead">
-                <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+            </div>
+
+            <div class="col-md-9">
+            <p>
+                </p><strong>Loan amount.</strong> </i> What is the minimum and maximum amount the lender lets you apply for and is it enough?</i></p>
+                <p><strong>Loan terms.</strong> <i>What are the minimum and maximum loan terms? Usually terms of between two and seven years are available, but it differs between providers.</i></p> 
+                <p><strong> Fees.</strong> <i>Check for fees such as charges you pay to take out the loan and ongoing costs such as monthly or annual fees.</i></p>
+                <p><strong>Interest rate.</strong> <i>Is the rate fixed or variable? Is it competitive?</i></p>
+                <p><strong>Repayment amount.</strong> <i>Once you know your loan amount and terms, you can use a loan repayment calculator to see if the repayments will be affordable on your budget.</i></p>
+                <p> <strong>Repayment terms.</strong><i> Can you choose your repayment schedule? Can you make extra repayments without a fee? Can you repay the loan early without penalty? </i></p>
+
             </p>
+
+            </div>
         </div>
+       </div>
     </div>
 </section>
 
