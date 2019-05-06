@@ -1,1 +1,1 @@
-web: gunicorn freelance_work.wsgi:application
+web: gunicorn loan_application.wsgi:application
