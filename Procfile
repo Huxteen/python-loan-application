@@ -1,0 +1,1 @@
+web: gunicorn freelance_work.wsgi:application
