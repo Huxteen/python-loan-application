@@ -71,7 +71,7 @@ def signup(request):
                 # send_mail(subject, message, from_email, to_list, fail_silently=True)
                 subject = 'QuickCash Email Verification'
 
-                current_site = "http://127.0.0.1:8000/accounts/email-verification" 
+                current_site = "https://quick-loan.herokuapp.com/accounts/email-verification" 
                 # current_site = get_current_site(request)
                 uid = (user.pk)
                 token = account_activation_token.make_token(user)
@@ -141,7 +141,7 @@ def resend_email_verification(request):
             # send_mail(subject, message, from_email, to_list, fail_silently=True)
             subject = 'QuickCash Email Verification'
 
-            current_site = "http://127.0.0.1:8000/accounts/email-verification"
+            current_site = "https://quick-loan.herokuapp.com/accounts/email-verification"
             # current_site = get_current_site(request)
             uid = (user.pk)
             token = account_activation_token.make_token(user)

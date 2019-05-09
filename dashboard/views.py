@@ -49,7 +49,7 @@ def request_loan(request):
             # send_mail(subject, message, from_email, to_list, fail_silently=True)
             subject = 'You Have A New Loan Request'
 
-            current_site = "http://127.0.0.1:8000/dashboard/approve-loan"
+            current_site = "https://quick-loan.herokuapp.com/dashboard/approve-loan"
             # current_site = get_current_site(request)
             uid = (status.id)
                     
