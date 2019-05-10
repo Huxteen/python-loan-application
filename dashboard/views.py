@@ -97,7 +97,7 @@ def approve_loan(request, loan_id):
             return redirect('view_all_loans')
         else:
             decline_loan = Loan.objects.get(pk=loan_id)
-            if approve_loan is not None:
+            if decline_loan is not None:
                 user = int(request.user.id)
                 decline_loan.admin_user = User(pk=user)
                 decline_loan.save()
